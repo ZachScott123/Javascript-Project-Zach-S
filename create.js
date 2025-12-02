@@ -9,14 +9,14 @@ let answerInput;
 
 export function createQuestion(data) {
     const createBtn = getElement("#create");
-    const modBox = getElement("#mod-box");
+    const fields = getElement("#create-fields");
 
     if (!creating) {
         creating = true;
         
         createBtn.textContent = "Submit New Question";
 
-        modBox.innerHTML = `
+        fields.innerHTML = `
             <input id="new-question" placeholder="Type your new Question...">
             <input id="new-answer" placeholder="Type your Answer...">
         `;
@@ -48,8 +48,20 @@ export function createQuestion(data) {
     data.questions.push(question);
     data.answers.push(answer);
 
-    modBox.innerHTML = "";
+    fields.innerHTML = "";
     createBtn.textContent = "Create New Question";
     creating = false;
+
+};
+
+export function createBg() {
+
+    const carImg = getElement("#car-bg");
+
+    const carImagesCount = 8;
+
+    const index = Math.floor(Math.random() * carImagesCount) + 1; 
+
+    carImg.src = `pics/pic${index}.jpg`;
 
 };

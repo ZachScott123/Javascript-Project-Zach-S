@@ -1,37 +1,181 @@
+/* ---------------------------------------------------
+   GLOBAL PAGE STYLE
+--------------------------------------------------- */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 40px auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #292929; /* MINT GREEN */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    text-align: center;
+/* ---------------------------------------------------
+   TOP BAR
+--------------------------------------------------- */
+#top-bar {
+    width: 100%;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+    /* Wavelike background pattern using radial gradients */
+    background-color: #2c544d;
+    background-image: 
+        radial-gradient(circle at 0% 50%, rgba(255,255,255,0.05) 10%, transparent 11%),
+        radial-gradient(circle at 25% 50%, rgba(255,255,255,0.05) 10%, transparent 11%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 10%, transparent 11%),
+        radial-gradient(circle at 75% 50%, rgba(255,255,255,0.05) 10%, transparent 11%);
+    background-size: 50px 20px; /* controls the size of the waves */
+}
+#top-inner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-#game-box {
-    margin-top: 20px;
-    padding: 20px;
-    border: 2px solid #333;
-    border-radius: 5px;
-}
-
-#question {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-}
-
-input[type="text"] {
-    width: 96%;
-    padding: 10px;
-    margin-bottom: 15px;
+#top-inner button {
+    background: #44aa88;
+    color: white;
+    border: 2px solid #44aa88;
+    padding: 12px 22px;
     font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-button {
-    padding: 10px 20px;
+#create-fields {
+    display: flex;
+    gap: 10px;
+}
+
+#create-fields input {
+    padding: 10px;
+    border: 2px solid #44aa88;
+    border-radius: 6px;
     font-size: 1rem;
 }
 
-#results {
-    margin-top: 30px;
+/* ---------------------------------------------------
+   TITLE
+--------------------------------------------------- */
+h1 {
+    margin-top: 100px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.8rem;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------------------------------------------------
+   GAME BOX
+--------------------------------------------------- */
+#game-box {
+    background: white;
+    width: 90%;
+    max-width: 550px;
+    margin-top: 50px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* Status counters */
+#answer-count,
+#correct-count {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #2c544d;
+    font-weight: bold;
+}
+
+/* Question display */
+#question {
+    font-size: 1.4rem;
+    margin: 20px 0;
+    font-weight: 600;
+    color: #333;
+    min-height: 60px;
+}
+
+/* Text input */
+#answer-input {
+    width: 95%;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: 2px solid #44aa88;
+    border-radius: 6px;
+    outline: none;
+    transition: 0.2s;
+}
+
+#answer-input:focus {
+    border-color: #2c544d;
+}
+
+/* Submit answer button */
+#answer-submit {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #44aa88;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#answer-submit:hover {
+    background: #3b9b7c;
+}
+
+/* ---------------------------------------------------
+   RESULTS SECTION
+--------------------------------------------------- */
+#results,
+#correct-questions {
+    margin-top: 25px;
+    width: 90%;
+    max-width: 550px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#correct-questions ul {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+/* --------------------------
+   CAR BACKGROUND
+-------------------------- */
+#car-bg {
+    position: fixed;           /* fixed in viewport */
+    bottom: 0;                 /* stick to bottom */
+    left: 50%;                 /* start at center horizontally */
+    transform: translateX(-50%); /* center image horizontally */
+    width: 2000px;              /* fixed width */
+    height: auto;              /* maintain aspect ratio */
+    filter: blur(6px) brightness(0.85); /* blurred and darkened */
+    z-index: 0;                /* behind everything */
+    pointer-events: none;      /* clicks pass through */
+}
+
+/* Make all main content above the car */
+body > *:not(#car-bg) {
+    position: relative;
+    z-index: 1;
 }

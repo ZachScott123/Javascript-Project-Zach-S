@@ -6,12 +6,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <img src="" id="car-bg">
+
+    <div id="top-bar">
+        <div id="top-inner">
+            <button id="create">Create New Question</button>
+            <div id="create-fields"></div>
+        </div>
+    </div>
 
     <h1>Automotive Trivia Game</h1>
 
     <div id="game-box">
         <div id="answer-count">Remaining: 10</div>
-        <div id="correct-count">0</div>
         <div id="question"></div>
 
         <form id="answer-form">
@@ -19,11 +26,6 @@
             <button id="answer-submit">Submit Answer</button>
         </form>
     </div>
-    <div id="mod-box"></div>
-    <button id="create">Create New Question</button>
-    </div>
-
-    <div id="results"></div>
 
     <script src="main.js" type="module"></script>
 </body>

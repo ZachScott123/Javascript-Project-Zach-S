@@ -2,13 +2,15 @@
 //main file
 
 import { loadQuestion, answerCheck } from './handler.js';
-import { createQuestion } from './create.js';
+import { createQuestion, createBg } from './create.js';
 
 "use strict"
 
 const getElement = selector => document.querySelector(selector);
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    createBg();
 
     const data = {
     questions: [ "What was the first mass-produced automobile?", //Ford Model T
@@ -97,4 +99,5 @@ document.addEventListener("DOMContentLoaded", () => {
         createQuestion(data);
 
     });
+    
 });

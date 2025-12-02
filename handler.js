@@ -39,7 +39,6 @@ export function answerCheck(data) {
     data.answerCount++
 
     getElement("#answer-count").textContent = "Remaining: " + (10 - data.answerCount);
-    getElement("#correct-count").textContent = data.correctCount;
 
     if (data.answerCount >= 10) {
         data.questionOutput.textContent = `Congratulations, you got ${data.correctCount} questions correct!`
