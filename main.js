@@ -1,13 +1,16 @@
 //Automotive Trivia Final Project Game
 //main file
 
+import { loadQuestion, answerCheck } from './handler.js';
+
 "use strict"
 
 const getElement = selector => document.querySelector(selector);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const questions = [ "What was the first mass-produced automobile?", //Ford Model T
+    const data = {
+    questions: [ "What was the first mass-produced automobile?", //Ford Model T
                         "Which car company invented the modern-day seatbelt?", //Volvo
                         "What does SUV stand for?", //Sport Utility Vehicle
                         "What does ATV stand for?", //All Terrain Vehicle
@@ -25,19 +28,25 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Which car brand's logo is based on a pair of propellers?", //BMW
                         "Who was Ferrari's founder?", //Enzo Ferrari
                         "What was the first thing manufactured by Lamborghini?" //Tractor
-    ];
+                ],
 
-    let currentQuestion = 0;
+    currentQuestion: 0,
+    answerCount: 0,
+    correctCount: 0,
+    answerInput: getElement("#answer-input"),
+    answerSubmit: getElement("#answer-submit"),
+    questionOutput: getElement("#question"),
+    loadQuestion: null
+};
 
-    let answerCount = 0;
-    let correctCount = 0;
+    data.loadQuestion = () => loadQuestion(data);
 
-    loadQuestion();
+    loadQuestion(data);
 
-    getElement("#answer-submit").addEventListener("click", (event) => {
+    data.answerSubmit.addEventListener("click", (event) => {
 
         event.preventDefault();
 
-        answerCheck()
+        answerCheck(data)
     });
 });
